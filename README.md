@@ -18,7 +18,7 @@ Kurento Demos, written in Java
 
 This repository contains various demos that showcase more specific use-cases than those shown in the official [Kurento Tutorials](https://github.com/Kurento/kurento-tutorial-java).
 
-**These demos are not officially supported**. They are written "on the go" as the need for them arises, but they don't receive the type of careful review that is given to the tutorials. As such, expect some rough edges or broken code. Having said that, in reality these demos should just be working fine.
+**These demos are not officially supported**. They are written "on the go" as the need for them arises, so they don't receive the type of careful review that is given to the tutorials. As such, expect some rough edges or broken code. Having said that, in reality these demos are usually working just fine.
 
 
 
