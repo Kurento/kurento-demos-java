@@ -43,11 +43,11 @@ import org.kurento.jsonrpc.JsonUtils;
 
 // Kurento events
 import org.kurento.client.ConnectionStateChangedEvent;
-import org.kurento.client.DataChannelCloseEvent;
-import org.kurento.client.DataChannelOpenEvent;
+import org.kurento.client.DataChannelClosedEvent;
+import org.kurento.client.DataChannelOpenedEvent;
 import org.kurento.client.ErrorEvent;
 import org.kurento.client.IceCandidateFoundEvent;
-import org.kurento.client.IceComponentStateChangeEvent;
+import org.kurento.client.IceComponentStateChangedEvent;
 import org.kurento.client.IceGatheringDoneEvent;
 import org.kurento.client.MediaFlowInStateChangeEvent;
 import org.kurento.client.MediaFlowOutStateChangeEvent;
@@ -298,10 +298,10 @@ public class Handler extends TextWebSocketHandler
         webRtcEp.getName(), session.getId());
 
     // Event: A WebRTC Data Channel has been closed.
-    webRtcEp.addDataChannelCloseListener(
-        new EventListener<DataChannelCloseEvent>() {
+    webRtcEp.addDataChannelClosedListener(
+        new EventListener<DataChannelClosedEvent>() {
       @Override
-      public void onEvent(DataChannelCloseEvent ev) {
+      public void onEvent(DataChannelClosedEvent ev) {
         log.info("[WebRtcEndpoint::{}] source: {}, timestamp: {}, tags: {}, channelId: {}",
             ev.getType(), ev.getSource().getName(), ev.getTimestamp(),
             ev.getTags(), ev.getChannelId());
@@ -309,10 +309,10 @@ public class Handler extends TextWebSocketHandler
     });
 
     // Event: A WebRTC Data Channel has been opened.
-    webRtcEp.addDataChannelOpenListener(
-        new EventListener<DataChannelOpenEvent>() {
+    webRtcEp.addDataChannelOpenedListener(
+        new EventListener<DataChannelOpenedEvent>() {
       @Override
-      public void onEvent(DataChannelOpenEvent ev) {
+      public void onEvent(DataChannelOpenedEvent ev) {
         log.info("[WebRtcEndpoint::{}] source: {}, timestamp: {}, tags: {}, channelId: {}",
             ev.getType(), ev.getSource().getName(), ev.getTimestamp(),
             ev.getTags(), ev.getChannelId());
@@ -337,10 +337,10 @@ public class Handler extends TextWebSocketHandler
     });
 
     // Event: The ICE backend changed state
-    webRtcEp.addIceComponentStateChangeListener(
-        new EventListener<IceComponentStateChangeEvent>() {
+    webRtcEp.addIceComponentStateChangedListener(
+        new EventListener<IceComponentStateChangedEvent>() {
       @Override
-      public void onEvent(IceComponentStateChangeEvent ev) {
+      public void onEvent(IceComponentStateChangedEvent ev) {
         log.debug("[WebRtcEndpoint::{}] source: {}, timestamp: {}, tags: {}, streamId: {}, componentId: {}, state: {}",
             ev.getType(), ev.getSource().getName(), ev.getTimestamp(),
             ev.getTags(), ev.getStreamId(), ev.getComponentId(), ev.getState());
