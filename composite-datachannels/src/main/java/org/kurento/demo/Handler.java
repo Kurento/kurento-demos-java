@@ -142,7 +142,7 @@ public class Handler extends TextWebSocketHandler
           handleAddIceCandidate(session, jsonMessage);
           break;
         case "STOP":
-          // Not implemented yet.
+          // Release all.
           handleStop(session, jsonMessage);
           break;
         case "DEBUG":
@@ -508,7 +508,12 @@ public class Handler extends TextWebSocketHandler
 
   private void stop(final WebSocketSession session)
   {
-    log.warn("[Handler::stop] NOT IMPLEMENTED YET");
+    // Remove all user sessions and release all resources
+    users.clear();
+    if (pipeline != null) {
+      log.info("[Handler::stop] Release the Media Pipeline");
+      pipeline.release();
+    }
   }
 
   private void handleStop(final WebSocketSession session,

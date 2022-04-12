@@ -211,8 +211,6 @@ function stop()
     return;
   }
 
-  console.warn("[stop] NOT IMPLEMENTED YET");
-
   uiSetState(UI_IDLE);
   hideSpinner(uiLocalVideo, uiRemoteVideo);
 
